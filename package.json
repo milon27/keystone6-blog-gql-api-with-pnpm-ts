@@ -1,0 +1,26 @@
+{
+  "name": "all-feature-keystone-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "keystone dev",
+    "start": "keystone start",
+    "build": "keystone build",
+    "postinstall": "keystone postinstall"
+  },
+  "keywords": [],
+  "author": "milon27",
+  "license": "ISC",
+  "dependencies": {
+    "@keystone-6/auth": "^4.0.1",
+    "@keystone-6/core": "^2.3.0",
+    "@keystone-6/fields-document": "^4.1.2",
+    "@prisma/client": "^4.4.0",
+    "dotenv": "^16.0.3",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.4.0"
+  }
+}

@@ -1,4 +1,4 @@
-import { text } from "@keystone-6/core/fields";
+import { relationship, text } from "@keystone-6/core/fields";
 import { document } from '@keystone-6/fields-document';
 import { LIST_TYPE } from "../utils/CommonTypes";
 import ListKeys from "../utils/ListKeys";
@@ -22,6 +22,14 @@ const BlogList = {
                 }
             }
         }),
+        author: relationship({
+            ref: ListKeys.user,
+            many: false,
+        }),
+        categories: relationship({
+            ref: ListKeys.category,
+            many: true
+        }),
         body: document({
             formatting: true,
             dividers: true,
@@ -37,7 +45,7 @@ const BlogList = {
                     selection: 'id name',
                 },
             },
-        }),
+        })
     }
 } as LIST_TYPE
 

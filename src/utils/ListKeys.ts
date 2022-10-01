@@ -1,5 +1,6 @@
 const ListKeys = {
     user: "user",
-    blog: "blog"
+    blog: "blog",
+    category: "category"
 }
 export default ListKeys

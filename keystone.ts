@@ -3,6 +3,7 @@ import { config } from '@keystone-6/core'
 import UserList from './src/list/UserList'
 import BlogList from './src/list/BlogList'
 import ListKeys from './src/utils/ListKeys'
+import CategoryList from './src/list/CategoryList'
 
 envConfig()
 
@@ -13,6 +14,7 @@ export default config({
     },
     lists: {
         [ListKeys.user]: UserList,
-        [ListKeys.blog]: BlogList
+        [ListKeys.blog]: BlogList,
+        [ListKeys.category]: CategoryList,
     }
 })

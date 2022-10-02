@@ -4,3 +4,5 @@ keystone.db
 *.log
 schema.graphql
 schema.prisma
+
+public

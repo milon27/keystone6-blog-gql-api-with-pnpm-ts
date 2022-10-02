@@ -4,6 +4,11 @@
     - user
     - blog
 
+## Run project in production and developement
+```bash
+bash run.sh
+```
+
 ### write some example query for frontend
 
 - get all post

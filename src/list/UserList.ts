@@ -1,4 +1,5 @@
 import { text, password, checkbox } from '@keystone-6/core/fields'
+import { isAdminLoggedIn, isUserLoggedIn } from '../auth/Auth'
 import { LIST_TYPE } from '../utils/CommonTypes'
 
 const UserList = {
@@ -23,6 +24,14 @@ const UserList = {
             }
         }),
         isAdmin: checkbox({ defaultValue: false })
+    },
+    access: {
+        operation: {
+            query: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
+            create: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
+            update: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
+            delete: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
+        }
     }
 } as LIST_TYPE
 

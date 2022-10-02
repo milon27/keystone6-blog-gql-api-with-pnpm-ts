@@ -1,5 +1,6 @@
 import { file, image, relationship, text } from "@keystone-6/core/fields";
 import { document } from '@keystone-6/fields-document';
+import { isUserLoggedIn } from "../auth/Auth";
 import { LIST_TYPE } from "../utils/CommonTypes";
 import ListKeys from "../utils/ListKeys";
 import StorageKeys from "../utils/StorageKeys";
@@ -49,6 +50,13 @@ const BlogList = {
                 },
             },
         })
+    }, access: {
+        operation: {
+            query: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
+            create: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
+            update: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
+            delete: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
+        }
     }
 } as LIST_TYPE
 

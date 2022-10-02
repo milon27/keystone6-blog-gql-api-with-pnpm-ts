@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "keystone dev",
-    "start": "keystone start",
+    "dev": "cross-env NODE_ENV=development keystone dev",
+    "start": "cross-env NODE_ENV=production keystone start",
     "build": "keystone build",
     "postinstall": "keystone postinstall"
   },
@@ -21,6 +21,7 @@
     "typescript": "^4.8.4"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "prisma": "^4.4.0"
   }
 }

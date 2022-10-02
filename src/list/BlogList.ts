@@ -27,7 +27,7 @@ const BlogList = {
             many: false,
         }),
         categories: relationship({
-            ref: ListKeys.category,
+            ref: `${ListKeys.category}.blogs`,
             many: true
         }),
         body: document({

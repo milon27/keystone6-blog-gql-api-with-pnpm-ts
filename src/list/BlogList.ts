@@ -1,7 +1,8 @@
-import { relationship, text } from "@keystone-6/core/fields";
+import { file, image, relationship, text } from "@keystone-6/core/fields";
 import { document } from '@keystone-6/fields-document';
 import { LIST_TYPE } from "../utils/CommonTypes";
 import ListKeys from "../utils/ListKeys";
+import StorageKeys from "../utils/StorageKeys";
 
 const BlogList = {
     fields: {
@@ -22,6 +23,8 @@ const BlogList = {
                 }
             }
         }),
+        img: image({ storage: StorageKeys.localImg }),
+        video: file({ storage: StorageKeys.localFile }),
         author: relationship({
             ref: ListKeys.user,
             many: false,

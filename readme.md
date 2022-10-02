@@ -3,6 +3,7 @@
 - Models
     - user
     - blog
+    - category
 
 ## Run project in production and developement
 ```bash

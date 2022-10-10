@@ -1,9 +1,27 @@
 import { file, image, relationship, text } from "@keystone-6/core/fields";
 import { document } from '@keystone-6/fields-document';
 import { isUserLoggedIn } from "../auth/Auth";
-import { LIST_TYPE } from "../utils/CommonTypes";
+import { ListType } from "../utils/CommonTypes";
 import ListKeys from "../utils/ListKeys";
 import StorageKeys from "../utils/StorageKeys";
+import { ICategory } from "./CategoryList";
+import { IUser } from "./UserList";
+
+export interface IBlog {
+    title: string
+    slug: string
+    img: {
+        url: string
+    }
+    video: {
+        url: string
+    }
+    categories: ICategory[]
+    author: IUser
+    body: {
+        document: any[]
+    }
+}
 
 const BlogList = {
     fields: {
@@ -58,6 +76,6 @@ const BlogList = {
             delete: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
         }
     }
-} as LIST_TYPE
+} as ListType<IBlog>
 
 export default BlogList

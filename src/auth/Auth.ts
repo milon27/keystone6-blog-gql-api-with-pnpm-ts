@@ -21,13 +21,15 @@ const { withAuth } = createAuth({
 
 
 let sessionSecret = `${process.env.SESSION_SECRET}`;
-
 let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
-const session = statelessSessions({
+
+interface ISesssionData {
+    id: string, name: string, isAdmin: boolean
+}
+const session = statelessSessions<ISesssionData>({
     maxAge: sessionMaxAge,
     secret: sessionSecret,
 });
-
 
 const isAdminLoggedIn = (session: any) => {
     // console.log("has user:", session?.data);

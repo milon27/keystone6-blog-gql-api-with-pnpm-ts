@@ -1,6 +1,13 @@
 import { text, password, checkbox } from '@keystone-6/core/fields'
 import { isAdminLoggedIn, isUserLoggedIn } from '../auth/Auth'
-import { LIST_TYPE } from '../utils/CommonTypes'
+import { ListType } from '../utils/CommonTypes'
+
+export interface IUser {
+    name: string
+    email: string
+    password: string
+    isAdmin: boolean
+}
 
 const UserList = {
     fields: {
@@ -23,16 +30,20 @@ const UserList = {
                 length: { min: 6 }
             }
         }),
-        isAdmin: checkbox({ defaultValue: false })
+        isAdmin: checkbox({ defaultValue: false }),
+        // not get any auto suggestion for the field names
     },
     access: {
         operation: {
-            query: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
+            query: ({ session, context, listKey, operation }) => {
+                // can't define session type here
+                return isAdminLoggedIn(session)
+            },
             create: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
             update: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
             delete: ({ session, context, listKey, operation }) => isAdminLoggedIn(session),
         }
     }
-} as LIST_TYPE
+} as ListType<IUser>
 
 export default UserList

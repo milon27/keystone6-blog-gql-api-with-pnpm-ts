@@ -1,7 +1,13 @@
 import { relationship, text } from "@keystone-6/core/fields";
 import { isUserLoggedIn } from "../auth/Auth";
-import { LIST_TYPE } from "../utils/CommonTypes";
+import { ListType } from "../utils/CommonTypes";
 import ListKeys from "../utils/ListKeys";
+import { IBlog } from "./BlogList";
+
+export interface ICategory {
+    title: string
+    blogs: IBlog[]
+}
 
 const CategoryList = {
     fields: {
@@ -20,6 +26,6 @@ const CategoryList = {
             delete: ({ session, context, listKey, operation }) => isUserLoggedIn(session),
         }
     }
-} as LIST_TYPE
+} as ListType<ICategory>
 
 export default CategoryList
